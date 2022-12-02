@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use LDAP\Result;
 use Mail;
 
 class UserController extends Controller
@@ -144,13 +145,19 @@ class UserController extends Controller
 
         $userCredential = $request->only('email','password');
         if(Auth::attempt($userCredential)){
-            return redirect('dashboard');
+             return redirect('dashboard');
+            //return view('dashboard.dashboard');
         }else{
             return back()->with('error','email or password is incorrect');
         }
 
     }
     public function loadDashboard(){
-        return view('Dashboard');
+        return view('dashboard.dashboard');
+    }
+    public function logout(Request $request){
+        $request->session()->flush();
+        Auth::logout();
+        return redirect('/login');
     }
 }

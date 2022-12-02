@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class isLogin
 {
@@ -16,6 +17,11 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
+       // dd($request->all());
+        if(Auth::user()){
+          //  dd($request->all());
+            return redirect('/dashboard');
+        }
         return $next($request);
     }
 }
