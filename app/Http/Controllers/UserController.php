@@ -155,7 +155,9 @@ class UserController extends Controller
     public function loadDashboard(){
         $networkCount = Network::where('user_id',Auth::user()->id)->orWhere('parent_user_id',Auth::user()->id)->count();
       //  dd($networkCount);
-        return view('dashboard.dashboard',compact('networkCount'));
+        $networkData = Network::with('user')->where('parent_user_id',Auth::user()->id)->get();
+       // dd($networkData);
+        return view('dashboard.dashboard',compact(['networkCount','networkData']));
     }
     public function logout(Request $request){
         $request->session()->flush();
