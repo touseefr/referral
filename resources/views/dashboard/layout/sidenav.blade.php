@@ -12,6 +12,9 @@
               <a href="/dashboard"><span class="fa fa-user mr-3"></span> Dashboard</a>
           </li>
           <li>
+              <a href="/referral-tracker"><span class="fa fa-user mr-3"></span> Referral Tracker</a>
+          </li>
+          <li>
             <a href="{{ route('logout') }}"><span class="fa fa-sign-out mr-3"></span> Log Out</a>
           </li>
         

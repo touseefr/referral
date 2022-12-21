@@ -1,6 +1,7 @@
 @extends('dashboard.layout.master')
 
 @section('content')
+<a href="javascript:void(0)" id="code" onclick="myFunction()" data-code="{{ Auth::user()->referral_code }}"><h6 style="cursor:pointer;" >Referral Code link</h6></a>
 <h2 class="mb-4" style="float: left;">Sidebar #04</h2>
 <h2 class="mb-4" style="float: right;">{{ $networkCount*10 }} Points</h2>
 
@@ -38,7 +39,16 @@
 
 
 
+<script>
+  function myFunction(){
+    var text = $('#code').data("code");
+   // text.select();
+    navigator.clipboard.writeText(text);
 
+// Alert the copied text
+alert("Copied the text: " + text);
+  }
+</script>
 
 
 @endsection

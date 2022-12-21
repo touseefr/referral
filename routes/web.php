@@ -32,6 +32,7 @@ Route::group(['middleware' => 'is_not_login'],function(){
 //if login success
 Route::group(['middleware' => 'is_not_logout'],function (){
     Route::get('/dashboard',[UserController::class,'loadDashboard']);
+    Route::get('/referral-tracker',[UserController::class,'referralTracker']);
     Route::get('/logout',[UserController::class,'logout'])->name('logout');
 });
 
